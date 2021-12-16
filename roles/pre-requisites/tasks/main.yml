@@ -1,0 +1,8 @@
+---
+# tasks file for pre-requisites
+- name: echo
+  command:
+    argv:
+      - echo
+      - "hello"
+

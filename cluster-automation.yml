@@ -6,7 +6,7 @@
 #    - pre-requisites
 #    - kubectl
 #    - cluster
-    - nginx
+#    - nginx
     - prometheus
     - demo-apps
 

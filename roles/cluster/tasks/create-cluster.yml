@@ -1,0 +1,45 @@
+- name: Create a KinD cluster
+  command:
+    argv:
+      - echo
+      - "{{kind_work_dir}}"
+
+- name: Check {{ cluster_name }} exists
+  shell: "kind get clusters"
+  register: cluster_result
+  vars:
+    cluster_exists: cluster.result.stdout.find('{{ cluster_name  }}') != -1
+  
+#- name: Echo check result
+#  command:
+#    argv:
+#      - echo
+#      - "{{cluster_exists}}"
+
+
+- name: Create cluster config dir if not exists
+  file:
+    path: "{{ kind_work_dir + '/' + cluster_name }}"
+    state: directory
+    mode: 755 
+
+- name: Move cluster config to work dir
+  template:
+    dest: "{{ kind_work_dir + '/' + cluster_name + '/' + cluster_config_file }}"
+    src: 'cluster-config.yml.j2'
+    mode: "755"
+
+- name: Create a kind cluster {{ cluster_name }}
+  command:
+    argv:
+      - kind
+      - create
+      - cluster
+      - --name
+      - "{{ cluster_name }}"
+      - --config
+      - "{{ kind_work_dir + '/' + cluster_name + '/' + cluster_config_file }}"
+  register: kind_cluster_result
+  when: cluster.result.stdout.find('{{ cluster_name  }}') == -1
+  
+

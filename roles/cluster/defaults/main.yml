@@ -1,2 +1,16 @@
 ---
 # defaults file for cluster
+
+# set work directory for kind
+kind_work_dir: '{{ansible_env.HOME}}/.kind'
+
+# set name of the cluster 
+cluster_name: demo
+
+# set config filename for kind cluster
+# this  file  will be placed under {{ kind_work_dir}}/{{cluster_name}} folder
+cluster_config_file: cluster_config.yml
+
+
+
+

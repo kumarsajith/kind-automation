@@ -1,2 +1,4 @@
 ---
 # tasks file for cluster
+- import_tasks: create-cluster.yml
+

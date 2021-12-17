@@ -8,6 +8,9 @@ Requirements
 
 Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
+Make  sure port 80  and  443 and  open on the machine.  If not disable existing services  using these  ports.
+example disable apache httpd [ sudo systemctl disable httpd && sudo systemctl stop httpd ]
+
 Role Variables
 --------------
 

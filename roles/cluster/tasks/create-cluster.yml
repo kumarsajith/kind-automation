@@ -8,15 +8,8 @@
   shell: "kind get clusters"
   register: cluster_result
   vars:
-    cluster_exists: cluster.result.stdout.find('{{ cluster_name  }}') != -1
+    cluster_exists: cluster_result.stdout.find(cluster_name) != -1
   
-#- name: Echo check result
-#  command:
-#    argv:
-#      - echo
-#      - "{{cluster_exists}}"
-
-
 - name: Create cluster config dir if not exists
   file:
     path: "{{ kind_work_dir + '/' + cluster_name }}"
@@ -39,7 +32,6 @@
       - "{{ cluster_name }}"
       - --config
       - "{{ kind_work_dir + '/' + cluster_name + '/' + cluster_config_file }}"
-  register: kind_cluster_result
-  when: cluster.result.stdout.find('{{ cluster_name  }}') == -1
+  when: cluster_result.stdout.find(cluster_name) == -1
   
 

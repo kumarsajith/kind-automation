@@ -1,0 +1,8 @@
+- name: Check if nginx controller is already up and running
+  shell: "kubectl  get pods -n ingress-nginx  --selector=app.kubernetes.io/component=controller"
+  register: nginx_check
+
+- name: Create nginx ingress controller in the cluster
+  shell: "kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml"
+  when: nginx_check.stdout.find ('Running') == -1
+

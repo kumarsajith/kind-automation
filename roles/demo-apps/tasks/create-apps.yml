@@ -1,0 +1,7 @@
+- name: Deploy demo apps foo and  bar 
+  shell: "kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/usage.yaml"
+
+- name: Check if services are running
+  shell: "echo $PATH"
+
+

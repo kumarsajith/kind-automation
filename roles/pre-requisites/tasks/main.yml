@@ -2,4 +2,6 @@
 # tasks file for pre-requisites
 - import_tasks: docker.yml
 - import_tasks: kind.yml
+- import_tasks: helm.yml
+
 

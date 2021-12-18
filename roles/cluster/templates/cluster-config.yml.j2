@@ -16,4 +16,10 @@ nodes:
     hostPort: 443
     protocol: TCP
 - role: worker
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
 

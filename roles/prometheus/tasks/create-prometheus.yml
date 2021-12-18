@@ -1,0 +1,10 @@
+- name: Create prometheus community
+#  shell: "kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/master/bundle.yaml"
+  shell:  "helm install prometheus-community/prometheus   --generate-name"
+
+
+
+  
+
+
+

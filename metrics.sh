@@ -20,7 +20,7 @@ req=$(curl -s http://localhost:30091/api/v1/query?query=avg%28rate%28promhttp_me
 memory=$(curl -s http://localhost:30091/api/v1/query?query=avg%28rate%28nginx_ingress_controller_nginx_process_virtual_memory_bytes%5B5m%5D%29%29 | jq -r  '.data.result[0].value[1]')
 
 
-echo $cpu, $req, $memory >> monitor.csv
+echo $(($(date +%s%N)/1000000)), $cpu, $req, $memory >> monitor.csv
 
 
 

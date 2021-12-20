@@ -31,6 +31,22 @@ Use below command  to install  git
 3. clone this repo in /opt/kind
 4. run  ansible-playbook cluster-automation.yml -v 
 
+In case of any errors,  you can run specific role/module as follows.
+1. Edit the cluster-automation.yml file  and comment the roles you dont want to run. for  example,  if  you want to run only nginx installation,  do following in  cluster-configuration.yml
+
+---
+
+- hosts: localhost
+  become: true
+  roles:
+'#    - pre-requisites
+'#    - kubectl
+'#    - cluster
+    - nginx
+'#   - prometheus
+'#    - demo-apps
+
+
 # Organization of cluster automation
 This  script  is oragnized as a set of independent roles that will  do following installations.  An  ansible role like a module/component  that can be run independently.
 

@@ -20,5 +20,22 @@ Instructions to  install  ansible
 2.  sudo apt update
 3.  sudo apt install ansible
 
+git needs to be installed on the machine. To install git, use  the  commadn  "sudo apt install git"
+
+
+# Quick Start
+
+1. login to your linux machine.
+2. create  a folder for example /opt/kind [you can  create any folder of your choice]
+3. clone this repo in /opt/kind
+4. run  ansible-playbook cluster-automation.yml -v 
+
+# Organization of cluster automation
+This  script  is oragnized as a set of independent roles that will  do following installations.  An  ansible role like a module/component  that can be run independently.
+
+1. pre-requisites : This role/module is to install pre-requisities required  to run kubernetes in linux. Following  pre-reqisites are installed with this script.
+   a. Docker
+   b. 
+   
 
 

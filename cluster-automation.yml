@@ -1,5 +1,4 @@
 ---
-
 - hosts: localhost
   become: true
   roles:
@@ -7,7 +6,6 @@
     - kubectl
     - cluster
     - nginx
-    - prometheus
     - demo-apps
 
 

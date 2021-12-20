@@ -1,21 +1,21 @@
 - name: Deploy demo apps foo and  bar 
   shell: "kubectl apply -f pr/demo-apps"
 
-- name: Check foo service status
-  shell: "kubectl get pods --selector=app=foo"
-  register: foo_service
+#- name: Check foo service status
+#  shell: "kubectl get pods --selector=app=foo"
+#  register: foo_service
 
-- name: Check bar service status
-  shell: "kubectl get pods --selector=app=bar"
-  register: bar_service
+#- name: Check bar service status
+#  shell: "kubectl get pods --selector=app=bar"
+#  register: bar_service
 
-- name: Verify foo and bar service is running
-  assert:
-    that: 
-      - bar_service.stdout.find('Running')  != -1 
-      - foo_service.stdout.find('Running')  != -1
-    fail_msg: One of foo  or bar is not started successfully. Please check the cluster for details
-    success_msg: foo and bar services are running as expected
+#- name: Verify foo and bar service is running
+#  assert:
+#    that: 
+#      - bar_service.stdout.find('Running')  != -1 
+#      - foo_service.stdout.find('Running')  != -1
+#    fail_msg: One of foo  or bar is not started successfully. Please check the cluster for details
+#    success_msg: foo and bar services are running as expected
 
 
 

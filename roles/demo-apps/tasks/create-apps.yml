@@ -1,5 +1,5 @@
 - name: Deploy demo apps foo and  bar 
-  shell: "kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/usage.yaml"
+  shell: "kubectl apply -f pr/demo-apps"
 
 - name: Check foo service status
   shell: "kubectl get pods --selector=app=foo"

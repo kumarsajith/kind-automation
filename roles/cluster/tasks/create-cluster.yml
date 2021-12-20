@@ -1,28 +1,26 @@
-- name: Create a KinD cluster
-  command:
-    argv:
-      - echo
-      - "{{kind_work_dir}}"
-
+#check if given cluster_name exists. This variable is defined in ../defaults/main.yml 
 - name: Check {{ cluster_name }} exists
   shell: "kind get clusters"
   register: cluster_result
   vars:
     cluster_exists: cluster_result.stdout.find(cluster_name) != -1
-  
+
+#create home directory for moving config file
 - name: Create cluster config dir if not exists
   file:
     path: "{{ kind_work_dir + '/' + cluster_name }}"
     state: directory
     mode: 755 
 
+#move config file to home directory
 - name: Move cluster config to work dir
   template:
     dest: "{{ kind_work_dir + '/' + cluster_name + '/' + cluster_config_file }}"
     src: 'cluster-config.yml.j2'
     mode: "755"
 
-- name: Create a kind cluster {{ cluster_name }}
+#create a kind cluster with given name
+- name: "Create a kind cluster name = {{ cluster_name }}"
   command:
     argv:
       - kind
@@ -33,5 +31,8 @@
       - --config
       - "{{ kind_work_dir + '/' + cluster_name + '/' + cluster_config_file }}"
   when: cluster_result.stdout.find(cluster_name) == -1
-  
+
+- name: Pause for kind and node becomes ready
+  pause:
+    minutes: 2  
 

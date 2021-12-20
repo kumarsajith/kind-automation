@@ -3,11 +3,11 @@
 - hosts: localhost
   become: true
   roles:
-#    - pre-requisites
-#    - kubectl
-#    - cluster
-#    - nginx
-#    - prometheus
+    - pre-requisites
+    - kubectl
+    - cluster
+    - nginx
+    - prometheus
     - demo-apps
 
 

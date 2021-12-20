@@ -13,6 +13,12 @@ NOTE: this is  tested on Ubuntu Linux Version 18.04
 
 
 # Dependencies
-This script depends on  following modules.
+This is an automation based on ansible and must be installed on the server.
 
-1.  Ansible
+Instructions to  install  ansible 
+1.  sudo apt-add-repository ppa:ansible/ansible
+2.  sudo apt update
+3.  sudo apt install ansible
+
+
+

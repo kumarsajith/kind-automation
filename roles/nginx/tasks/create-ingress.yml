@@ -4,5 +4,7 @@
 
 - name: Create nginx ingress controller in the cluster
   shell: "kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml"
+  #shell: "helm install nginx-ingress nginx-stable/nginx-ingress"
   when: nginx_check.stdout.find ('Running') == -1
+
 

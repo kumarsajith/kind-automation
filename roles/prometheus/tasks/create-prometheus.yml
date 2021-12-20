@@ -1,7 +1,9 @@
 - name: Create prometheus community
 #  shell: "kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/master/bundle.yaml"
-  shell:  "helm install prometheus-community/prometheus   --generate-name"
-
+#  shell:  "helm install prometheus-community/kube-prometheus-stack   --generate-name --set prometheus.service.type=NodePort --set grafana.service.type=NodePort --set prometheus.service.nodePort=30091 --set grafana.service.nodePort=30092"
+  shell: "helm install prometheus-community/prometheus-operator --generate-name   --set prometheus.service.type=NodePort --set grafana.service.type=NodePort --set prometheus.service.nodePort=30091 --set grafana.service.nodePort=30092"
+# username: admin
+# password: prom-operator
 
 
   

@@ -7,8 +7,8 @@
 #    - kubectl
 #    - cluster
 #    - nginx
-    - prometheus
-#    - demo-apps
+#    - prometheus
+    - demo-apps
 
 
 

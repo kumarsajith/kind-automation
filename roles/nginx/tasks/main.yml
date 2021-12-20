@@ -1,5 +1,6 @@
 ---
 # tasks file for nginx
 
-- import_tasks: create-ingress.yml
+# - import_tasks: create-ingress.yml
 
+- import_tasks: custom-ingress.yml

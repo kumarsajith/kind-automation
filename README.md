@@ -13,14 +13,15 @@ NOTE: this is  tested on Ubuntu Linux Version 18.04
 
 
 # Dependencies
-This is an automation based on ansible and must be installed on the server.
+This is an automation based on ansible and must be installed on the server. [Git is also required for code checkout]
 
 Instructions to  install  ansible 
 1.  sudo apt-add-repository ppa:ansible/ansible
 2.  sudo apt update
 3.  sudo apt install ansible
 
-git needs to be installed on the machine. To install git, use  the  commadn  "sudo apt install git"
+Use below command  to install  git 
+1. sudo apt install git
 
 
 # Quick Start

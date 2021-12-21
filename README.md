@@ -49,7 +49,7 @@ The overall automation is developed as a pipeline of ansible roles. Note that an
 4. **nginx role**: this role is created to setup necessary configurations and pods to install prometheus and nginx ingress. These are existing definitions and modified to suite kind cluster configurations. Note that kind cluster require port mapping to be defined before ports can be exposed out of VM. These definitions are available under /pr folder.
 5. **demo apps role**: This is to setup demo apps /foo and /bar to test the ingress.
 
-Scripts
+**Scripts**
 There are three scripts created to monitor the health of the cluster, these can be configured as cron-jobs to capture the stats.
 
 1. health.sh : This is to check the general health of the kubernetes cluster. 

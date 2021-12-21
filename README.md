@@ -33,39 +33,78 @@ Role definitions
    Every dependency is defined in a seperate yaml file under role/pre-requisiste/tasks folder. 
 2. kubectl role: This is an existing ansible role developed by community to install docker in host machines. 
 3. cluster role: This role is to setup a multi node kind cluster in host vm. The tasks are available in roles/cluster/tasks/create-cluster.yml. 
-   Note that node configurations are created as a template file under /roles/cluster/templates/cluster-config.yml.j2. Default configuration is a two node cluster    with 1 master and 1 worker nodes. if you want to create a cluster with more nodes edit the template file. You can repeate the role definitions in the file to    create either a master or worker node.
+
+Please note following:
+   (a) Note that node configurations are created as a template file under /roles/cluster/templates/cluster-config.yml.j2. Default configuration is a two node cluster    with 1 master and 1 worker nodes. if you want to create a cluster with more nodes edit the template file. You can repeate the role definitions in the file to    create either a master or worker node. 
+   (b) There are port mappings defined on the above template and this will be used to cofigure host machine ports to kind cluster nodes. If you wish to make changes you can edit these too.
    
-5. 
+4. nginx role: this role is created to setup necessary configurations and pods to install prometheus and nginx ingress. These are existing definitions and modified to suite kind cluster configurations. Note that kind cluster require port mapping to be defined before ports can be exposed out of VM. These definitions are available under /pr folder.
+5. demo apps role: This is to setup demo apps /foo and /bar to test the ingress.
+
+Scripts
+There are three scripts created to monitor the health of the cluster, these can be configured as cron-jobs to capture the stats.
+
+1. health.sh : This is to check the general health of the kubernetes cluster. 
+2. metrics.sh: This script will query using promQL and create a csv file monitor.csv that will contain date-time-in millis, average http request, average cpu and average memory. Every time when the script run, the values will be appended to the csv file. 
+3. app-health.sh: this is used to monitor the health of the foo and bar services. 
+
+Pending:
+Need to send email alerts in case of health status failures.
 
 # Quick Start
 
-1. login to your linux machine.
-2. create  a folder for example /opt/kind [you can  create any folder of your choice]
-3. clone this repo in /opt/kind
-4. run  ansible-playbook cluster-automation.yml -v 
+1. login to your linux machine as root user. [This is tested in Ubunutu 18.04 only]
+2. create  a folder for example /kind [you can  create any folder of your choice]
+3. clone this repo in /kind [ git clone https://github.com/kumarsajith/kind-automation.git]
+4. Make sure that, Dependencies as mentioned above are met.
+5. run below command to spin off a cluster  
+   ansible-playbook cluster-automation.yml
+   
+   The automation will run in below sequence to create the cluster
+   1. pre-requisite role
+   2. kubectl role
+   3. cluster role
+   4. nginx role
+   5. demo apps role
 
-In case of any errors,  you can run specific role/module as follows.
-1. Edit the cluster-automation.yml file  and comment the roles you dont want to run. for  example,  if  you want to run only nginx installation,  do following in  cluster-configuration.yml
+In case, if you want to run the automation from any particular steps, you can edit the cluster-automation.yml file and comment out roles that are not required to be run again. for example, if you want to run only nginx and demo-apps use following configuration
 
+Sample configuration to run only nginx and demo-apps
 ---
 
 - hosts: localhost
   become: true
   roles:
-'#    - pre-requisites
-'#    - kubectl
-'#    - cluster
     - nginx
-'#   - prometheus
-'#    - demo-apps
+    - demo-apps
 
+Save the file and run ansible-playbook cluster-automation.yml again.
 
-# Organization of cluster automation
-This  script  is oragnized as a set of independent roles that will  do following installations.  An  ansible role like a module/component  that can be run independently.
+After the cluster is spin off, you can use below scripts to monitor the status
+1. health.sh
+2. metrics.sh
+3. app-health.sh
 
-1. pre-requisites : This role/module is to install pre-requisities required  to run kubernetes in linux. Following  pre-reqisites are installed with this script.
-   a. Docker
-   b. 
-   
+# Monitor using Grafana
+This setup also configure the cluster monitoring using Grafana. Use below URL of the host machine to access prometheus and grafana
 
+Assume your hostmachine is "demohost" [You can substitute with IP instead of demohost]
+1. Prometheus: http://demohost:30091/
+2. Grafana: http://demohost:30092
+
+Grafana UI can be configured to monitor ingress cluster. Follow below steps to configure this using Grafana UI.
+
+1. Open http://demohost:30092
+2. use admin/admin to login [change password after first time login]
+3. From left menu, mouse over gear icon and click on Data Source. 
+4. Click on Add a new data source
+5. Select prometheus as data source
+6. In the prometheus URL type in http://demohost:30091/
+7. scroll to bottom of the page and click save and test
+8. Now from left menu, mouse over dashboard and select import.
+9. Note that you can import many available grafana dashboards. In this case you can type in the number 9614 which is the ingress dashboard template.
+10. Select data source as prometheus as created above.
+11. click import and now you can see the ingress dashboard in Grafana
+
+Note: Dashboards are available to monitor Kubernetes resources and cluster as well, this can be done by simply importing the desired UI dashboard. Prometheus is already configured to monitor the cluster resuorces, so no additinoal configuration is required.
 

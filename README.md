@@ -26,7 +26,7 @@ Use below command  to install  git
 This scripts are tested only with Ubuntu 18.04, and may not work in other linux distributions. To make it work on other distributions, the pre-requsite role need to be modified.
 
 # Ansible Project Implementation
-The overall automation is developed as ansible roles as below. Note that ansible role is an independent component that can be combined with any ansible automation script.
+The overall automation is developed as a pipeline of ansible roles. Note that ansible role is an independent component that can be combined with any ansible automation script.
 
 Role definitions
 1. pre-requisite role: This role is prepare the host VM to install kind kubernetes. The dependencies include docker, kind and helm packaging.

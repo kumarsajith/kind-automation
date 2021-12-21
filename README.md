@@ -1,7 +1,7 @@
 # Project
 This project is to automate a Kubernetes cluster creation using kind and configure ingress, prometheus to monitor ingress. Automation is implemented using Ansible scripts and following are the roles/modules available to run with ansible.
 
-NOTE: this is  tested on Ubuntu Linux Version 18.04
+NOTE: this is  tested on Ubuntu Linux Version 18.04 [ The script can be run on other linux also with slight modifications and Docker installation. Refer the section at the bottom of this page for details]
 
 1. Create a kind kubernetes multi-node  cluster
 2. Install nginx ingress controller  in the  cluster

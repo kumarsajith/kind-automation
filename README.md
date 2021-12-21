@@ -77,11 +77,11 @@ In case, if you want to run the automation from any particular steps, you can ed
 Sample configuration to run only nginx and demo-apps
 ---
 
-- hosts: localhost
-  become: true
-  roles:
-    - nginx
-    - demo-apps
+'- hosts: localhost
+  'become: true
+  'roles:
+    '- nginx
+    '- demo-apps
 
 Save the file and run ansible-playbook cluster-automation.yml again.
 

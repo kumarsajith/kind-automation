@@ -87,6 +87,9 @@ To check the services use below urls
 1. curl http://localhost:30080/foo
 2. curl http://localhost:30080/bar
 
+# Improvements to Monitoring Scripts
+Monitoring scripts can be modified to sent notifications in case of health status changes.
+
 
 # Monitor using Grafana
 This setup also configure the cluster monitoring using Grafana. Use below URL of the host machine to access prometheus and grafana

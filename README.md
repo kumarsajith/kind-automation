@@ -63,7 +63,8 @@ Need to send email alerts in case of health status failures.
 3. clone this repo in /kind [ git clone https://github.com/kumarsajith/kind-automation.git]
 4. Make sure that, Dependencies as mentioned above are met.
 5. run below command to spin off a cluster  
-   ansible-playbook cluster-automation.yml
+   
+   **ansible-playbook cluster-automation.yml**
    
    The automation will run in below sequence to create the cluster
    1. pre-requisite role

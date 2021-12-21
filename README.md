@@ -22,6 +22,9 @@ Instructions to  install  ansible
 Use below command  to install  git 
 1. sudo apt install git
 
+Install jq parser
+1. apt  instal jq
+
 # Known Limitations
 This scripts are tested only with Ubuntu 18.04, and may not work in other linux distributions. To make it work on other distributions, the pre-requsite role need to be modified.
 

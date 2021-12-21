@@ -55,7 +55,7 @@ There are three scripts created to monitor the health of the cluster, these can 
 
 1. health.sh : This is to check the general health of the kubernetes cluster. 
 2. metrics.sh: This script will query using promQL and create a csv file monitor.csv that will contain date-time-in millis, average http request, average cpu and average memory. Every time when the script run, the values will be appended to the csv file. 
-3. app-health.sh: this is used to monitor the health of the foo and bar services. 
+3. health-apps.sh: this is used to monitor the health of the foo and bar services. 
 
 Pending:
 Need to send email alerts in case of health status failures.

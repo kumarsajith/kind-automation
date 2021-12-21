@@ -1,0 +1,3 @@
+---
+# vars file for pre-requisites
+kind_bin_location: /usr/bin/kind

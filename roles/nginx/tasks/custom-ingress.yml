@@ -1,0 +1,32 @@
+- name: Create CRD
+  shell: "kubectl apply -f pr/01-prometheus-operator-crd"
+
+- name: Deploy Prometheus Operator
+  shell: "kubectl apply -f pr/02-prometheus-operator"
+
+- name: Deploy Prometheus
+  shell: "kubectl apply -f pr/03-prometheus"
+
+- name: wait prometheus ready
+  pause:
+    minutes: 1
+
+- name: Create Namespace Ingress
+  shell: "kubectl apply -f pr/04-ingress-nginx/namespace.yaml"
+
+- name: Deploy Nginx Admission Webhook
+  shell: "kubectl apply -f pr/04-ingress-nginx/admission-webhooks"
+
+- name: Deploy Nginx Ingress Controller
+  shell: "kubectl apply -f pr/04-ingress-nginx"
+
+- name: wait until ingress ready
+  pause:
+    minutes: 2
+
+- name: Create ServiceMonitor for Nginx Controller
+  shell: "kubectl apply -f pr/05-servicemonitor"
+
+- name: Deploy grafana
+  shell: "kubectl apply -f pr/06-grafana"
+

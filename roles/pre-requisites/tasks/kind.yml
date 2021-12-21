@@ -1,0 +1,10 @@
+---
+- name: Install Kind
+  get_url:
+    url: "https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64"
+    dest: "{{kind_bin_location}}"
+
+- name: Set execution permission for kind
+  file:
+    path: "{{kind_bin_location}}"
+    mode: "+x"

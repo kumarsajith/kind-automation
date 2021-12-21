@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  become: true
+  roles:
+    - pre-requisites
+    - kubectl
+    - cluster
+    - nginx
+    - demo-apps
+
+
+

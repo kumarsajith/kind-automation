@@ -1,0 +1,3 @@
+---
+# tasks file for demo-apps
+- import_tasks: create-apps.yml

@@ -82,6 +82,12 @@ After the cluster is spin off, you can use below scripts to monitor the status
 2. metrics.sh
 3. app-health.sh
 
+Note: Ingress is mapped to host port 30080 so use this to check ingress.
+To check the services use below urls
+1. curl http://localhost:30080/foo
+2. curl http://localhost:30080/bar
+
+
 # Monitor using Grafana
 This setup also configure the cluster monitoring using Grafana. Use below URL of the host machine to access prometheus and grafana
 

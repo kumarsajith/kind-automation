@@ -28,18 +28,18 @@ This scripts are tested only with Ubuntu 18.04, and may not work in other linux 
 # Ansible Project Implementation
 The overall automation is developed as a pipeline of ansible roles. Note that ansible role is an independent component that can be combined with any ansible automation script.
 
-Role definitions
-1. pre-requisite role: This role is prepare the host VM to install kind kubernetes. The dependencies include docker, kind and helm packaging.
+**Role definitions**
+1. **pre-requisite role**: This role is prepare the host VM to install kind kubernetes. The dependencies include docker, kind and helm packaging.
    Every dependency is defined in a seperate yaml file under role/pre-requisiste/tasks folder. 
-2. kubectl role: This is an existing ansible role developed by community to install docker in host machines. 
-3. cluster role: This role is to setup a multi node kind cluster in host vm. The tasks are available in roles/cluster/tasks/create-cluster.yml. 
+2. **kubectl role**: This is an existing ansible role developed by community to install docker in host machines. 
+3. **cluster role**: This role is to setup a multi node kind cluster in host vm. The tasks are available in roles/cluster/tasks/create-cluster.yml. 
 
 Please note following:
    (a) Note that node configurations are created as a template file under /roles/cluster/templates/cluster-config.yml.j2. Default configuration is a two node cluster    with 1 master and 1 worker nodes. if you want to create a cluster with more nodes edit the template file. You can repeate the role definitions in the file to    create either a master or worker node. 
    (b) There are port mappings defined on the above template and this will be used to cofigure host machine ports to kind cluster nodes. If you wish to make changes you can edit these too.
    
-4. nginx role: this role is created to setup necessary configurations and pods to install prometheus and nginx ingress. These are existing definitions and modified to suite kind cluster configurations. Note that kind cluster require port mapping to be defined before ports can be exposed out of VM. These definitions are available under /pr folder.
-5. demo apps role: This is to setup demo apps /foo and /bar to test the ingress.
+4. **nginx role**: this role is created to setup necessary configurations and pods to install prometheus and nginx ingress. These are existing definitions and modified to suite kind cluster configurations. Note that kind cluster require port mapping to be defined before ports can be exposed out of VM. These definitions are available under /pr folder.
+5. **demo apps role**: This is to setup demo apps /foo and /bar to test the ingress.
 
 Scripts
 There are three scripts created to monitor the health of the cluster, these can be configured as cron-jobs to capture the stats.

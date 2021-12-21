@@ -114,6 +114,8 @@ Grafana UI can be configured to monitor ingress cluster. Follow below steps to c
 
 Note: Dashboards are available to monitor Kubernetes resources and cluster as well, this can be done by simply importing the desired UI dashboard. Prometheus is already configured to monitor the cluster resuorces, so no additinoal configuration is required.
 
+NOTE: There are other sophisticated tools like Prisma Cloud that can be installed to monitor not only health but also the pod topology and network connections as well.
+
 # Running this script in other linux
 
 The dependecny that may fail while running on linux other than Ubuntu 18.04 would be the pre-requisite ansible role. The docker engine is configured to setup only for Ubuntu. So if you want to run the same script of other linux, do following.

@@ -34,7 +34,8 @@ The overall automation is developed as a pipeline of ansible roles. Note that an
 2. **kubectl role**: This is an existing ansible role developed by community to install docker in host machines. 
 3. **cluster role**: This role is to setup a multi node kind cluster in host vm. The tasks are available in roles/cluster/tasks/create-cluster.yml. 
 
-Please note following:
+**Please note following:**
+
    (a) Note that node configurations are created as a template file under /roles/cluster/templates/cluster-config.yml.j2. Default configuration is a two node cluster    with 1 master and 1 worker nodes. if you want to create a cluster with more nodes edit the template file. You can repeate the role definitions in the file to    create either a master or worker node. 
    (b) There are port mappings defined on the above template and this will be used to cofigure host machine ports to kind cluster nodes. If you wish to make changes you can edit these too.
    

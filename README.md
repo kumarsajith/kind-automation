@@ -63,9 +63,9 @@ Need to send email alerts in case of health status failures.
 # Quick Start
 
 1. login to your linux machine as root user. [This is tested in Ubunutu 18.04 only]
-2. create  a folder for example /kind [you can  create any folder of your choice]
+2. create  a folder /kind [you can  create any folder of your choice]
 3. clone this repo in /kind [ git clone https://github.com/kumarsajith/kind-automation.git]
-4. Make sure that, Dependencies as mentioned above are met.
+4. Make sure that Dependencies as mentioned above are met.
 5. move to folder /kind and run below command to spin off a cluster  
    
    **ansible-playbook cluster-automation.yml**

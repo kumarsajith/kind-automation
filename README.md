@@ -72,18 +72,9 @@ Need to send email alerts in case of health status failures.
    4. nginx role
    5. demo apps role
 
-In case, if you want to run the automation from any particular steps, you can edit the cluster-automation.yml file and comment out roles that are not required to be run again. for example, if you want to run only nginx and demo-apps use following configuration
+In case, if you want to run the automation from any particular steps, you can edit the cluster-automation.yml file and comment out roles that are not required to be run again. for example, if you want to run only nginx and demo-apps then comment out other modules under the "roles" definition.
 
-Sample configuration to run only nginx and demo-apps
----
-
-'- hosts: localhost
-  'become: true
-  'roles:
-    '- nginx
-    '- demo-apps
-
-Save the file and run ansible-playbook cluster-automation.yml again.
+Save the file and run ansible-playbook cluster-automation.yml again. Alternatively you can take a copy of the cluster-automation.yml file and edit that too. So in this case you can use ansible-playbook to run the new file instead of cluster-automation.yml
 
 After the cluster is spin off, you can use below scripts to monitor the status
 1. health.sh
